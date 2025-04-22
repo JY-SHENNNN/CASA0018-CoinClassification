@@ -6,7 +6,7 @@ Edge impulse link: https://studio.edgeimpulse.com/studio/652263/acquisition/trai
 ---
 ## Introduction
 <div style=" text-align: center;">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/overview.png?token=GHSAT0AAAAAAC4O6KW5YSTQTVJYWZZ3OIBY2AHTJFA">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/overview.png">
   <p><strong>Fig. 1.</strong> Example images of UK coins</p>
 </div>
 
@@ -24,7 +24,7 @@ Is it able to develop a system that run on mobile phone to quick classify the UK
 ## Application Overview
 
 <div style=" text-align: center;">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/buildingblock.png?token=GHSAT0AAAAAAC4O6KW5R67PMXZVL5LZIU622AHRUMA">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/buildingblock.png">
   <p><strong>Fig. 2.</strong> Full pipeline for coin classification system.</p>
 </div>
 
@@ -37,12 +37,12 @@ Once the trained model experierenced testing, which have the similar behaviour a
 ---
 ## Data
 <div style=" text-align: center;">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/open_source_Data.png?token=GHSAT0AAAAAAC4O6KW4J7FRQKR6XB32ZDFM2AHTIUQ" width="600">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/open_source_Data.png" width="600">
   <p><strong>Fig. 3.</strong> Open-source data from (Sourikta, 2024).</p>
 </div>
 
 <div style=" text-align: center">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/labelled_self_data.png?token=GHSAT0AAAAAAC4O6KW5MEZJJT5MJ3QJ3SSG2AHTJ3Q" height = "500" width = "500">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/labelled_self_data.png" height = "500" width = "500">
   <p><strong>Fig. 4.</strong> Self-collected data with label</p>
 </div>
 
@@ -55,13 +55,13 @@ Before model training, all raw data underwent preprocessing steps. The downloade
 ## Model
 
 <div style=" text-align: center;">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/simple_classify_model.png?token=GHSAT0AAAAAAC4O6KW4V3BSB3LJG6Q6BZG42AHTLWA">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/simple_classify_model.png">
   <p><strong>Fig. 5.</strong> Comparison between classification models.</p>
 </div>
 
 ---
 <div style=" text-align: center;">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/transfer_learning_model.png?token=GHSAT0AAAAAAC4O6KW57TLD7QM7UA3GRGLW2AHTMMQ">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/transfer_learning_model.png">
   <p><strong>Fig. 6.</strong> Comparison between MobileNet models.</p>
 </div>
 
@@ -74,7 +74,7 @@ The selection of MobileNetV2 was further justified by its ability to maintain re
 ---
 ## Experiments
 <div style="text-align: center;">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/trasfer_learning_model_adjust.png?token=GHSAT0AAAAAAC4O6KW4ID3G7EMQRKQSDKOW2AHTNOA">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/trasfer_learning_model_adjust.png">
   <p><strong>Fig. 7.</strong> Comparison between MobileNetV2 models.</p>
 </div>
 
@@ -89,18 +89,18 @@ The dropout rate of 0.3 yielded the best results, improving accuracy by 3%. In t
 ## Results and Observations
 
 <div style=" text-align: center;  margin-bottom: 40px">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/feature.png?token=GHSAT0AAAAAAC4O6KW4OQL6ST7L6XJPRMA42AHXAMA">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/feature.png">
   <p><strong>Fig. 8.</strong> Generated feature based on the 196 training dataset. </p>
 </div>
 
 <div style="text-align: center; margin-bottom: 40px">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/training_model.png?token=GHSAT0AAAAAAC4O6KW5UJTOOWFRJ2VULQK42AHTZUQ">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/training_model.png">
   <p><strong>Fig. 9.</strong> Training model results.</p>
 </div>
 
 
 <div style=" text-align: center; margin-bottom: 40px">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/test_model.png?token=GHSAT0AAAAAAC4O6KW57MYKYCZJM4MAEVBK2AHT2AA">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/test_model.png">
   <p><strong>Fig. 10.</strong> Testing model results.</p>
 </div>
 
