@@ -70,6 +70,18 @@ What experiments did you run to test your project? What parameters did you chang
 *Tip: probably ~300 words and graphs and tables are usually good to convey your results!*
 
 ## Results and Observations
+The coin classificatino model achieved generally good peroformance while exhibiting some specific limitations. The system performed particularly well in recognizing distinctive coin types, with the 50p and 20p coins showing approximately 90% accuraacy in both training and testing phases. This strong performance can be attributed to their unique heptagonal shapes which made them easily distinguishable. The 1p coin also showed relatively good accuracy due to its distinctive copper color and the "1" marking on its reverse side. 5p coins showed 83.3% train accuracy but increased to 85.7% in test accuracy.
+
+
+However, the model faced significant challenges with 10p coin classification. There is a noticeable accuracy gap between training and test sets, suggesting potential overfitting for 10p. About 20% of 10p coins were misclassified as 5p coins, primarily because both feature similar Queen's head designs on the obverse side and comparable textures on the reverse. Additionally, approximately 10% of 10p coins were confused with 50p coins suspectively due to similarities on size. 
+
+Real-world testing conducted through Edge Impulse's QR code deployment revealed additional limitations. The model's performance varied considerably depending on different backgrounds and coin orientations. I guess it's because the training dataset contains most of image in font.
+
+During testing, several key challenges emerged. One issue was the variation in the Queen’s portrait design, which differed depending on the year the coin was minted. Another difficulty came from the coins’ small size, which made it harder to capture fine texture details in the images. In addition, the reflective nature of the coin material often caused lighting interference during image capture, affecting image consistency and model accuracy.
+
+With additional development time, several improvements could be implemented. Expanding the training dataset to include images taken under different lighting conditions and from multiple angles, which would help to enhance the model’s generalization. Enhancing preprocessing methods to more effectively manage glare and reflections from coin surfaces could improve input quality.
+Also, applying temporal analysis to video streams, rather than relying on single-frame inputs, may give better performance while real-world testing.These enhancements would address the current limitations while building upon the model's existing strengths in recognizing distinctive coin features.
+
 Synthesis the main results and observations you made from building the project. Did it work perfectly? Why not? What worked and what didn't? Why? What would you do next if you had more time?  
 
 *Tip: probably ~300 words and remember images and diagrams bring results to life!*
