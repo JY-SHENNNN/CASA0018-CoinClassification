@@ -46,7 +46,7 @@ Initially, the model experimented with a simple classification model, achieving 
 
 In addition, this configuration supported both RGB and grayscale inputs. Larger models with a 160x160 input size only supported RGB images, which limited their flexibility. Comparative analysis showed that reducing the width multiplier (e.g., to 0.1 or 0.05) significantly decreased accuracy to 63.6% and 57.6% respectively. 
 
-The selection of MobileNetV2 was further justified by its ability to maintain reasonable accuracy (57.6%) even with aggressive compression (0.35 width multiplier), while simpler models like MobileNetV1 failed to exceed 57.6% accuracy regardless of parameter adjustments. The structure of MobileNetV2, especially its use of inverted residual blocks and linear bottlenecks, helped it extract features more effectively. This is likely why it performed better on the coin classification task than both the basic classification model and MobileNetV1.
+The selection of MobileNetV2 was further justified by its ability to maintain reasonable accuracy (57.6%) even with aggressive 0.35 width multiplier, while simpler models like MobileNetV1 failed to exceed 57.6% accuracy regardless of parameter adjustments. The structure of MobileNetV2, especially its use of inverted residual blocks and linear bottlenecks, helped it extract features more effectively. This is likely why it performed better on the coin classification task than both the basic classification model and MobileNetV1.
 
 
 This is a Deep Learning project! What model architecture did you use? Did you try different ones? Why did you choose the ones you did?
@@ -54,6 +54,17 @@ This is a Deep Learning project! What model architecture did you use? Did you tr
 *Tip: probably ~200 words and a diagram is usually good to describe your model!*
 
 ## Experiments
+During the model optimization process, various parameters were adjusted to achieve the best performance for MobileNetV2 (96x96, 0.35). Experimental results showed that using 64 neurons led to significantly faster training than 128 neurons, while maintaining the same accuracy of 81.8%. Based on early tests, the number of epochs was fine-tuned starting from 60. Results indicated that 60 epochs were sufficient, as more epochs only slightly reduced the loss but introduced a higher risk of overfitting.
+
+To avoid overfitting, I continuously monitored the difference between training and test accuracy. When the test accuracy dropped significantly compared to training, it suggested the model had memorized the training data, prompting further parameter adjustments. Conversely, when test accuracy exceeded training accuracy, it implied the model might have "cheated" by overfitting to the test set, which led to expand the dataset to improve generalization. The training was stopped when the gap between training and test accuracy became minimal, indicating a well-balanced model.
+
+The dropout rate of 0.3 yielded the best results, improving accuracy by 3%. In transfer learning, freezing 35% of base layers significantly outperformed the 50% freeze ratio, which caused a 3–7% drop in accuracy. The patience setting for early stopping was also crucial. A patience value of 8 achieved the best balance with 85% accuracy, while smaller values like 3–5 limited performance to 78.8%. Altogether, the configuration of 64 neurons, 0.3 dropout rate, 35% freeze ratio, and patience of 8 offered the best balance of accuracy and efficiency.
+
+Specifically, dropout, layer freezing, and callback settings were fine-tuned to improve training control and performance monitoring. A ModelCheckpoint callback was implemented to save the best-performing model based on validation accuracy. Additionally, the script adopted a modular and well-organized callback structure, making it easier to manage and test different configurations.
+
+Although Edge Impulse does not support full training accuracy or loss curve visualization, we evaluated model performance using the confusion matrix and data explorer tools. These provided detailed insights into misclassifications and class-wise performance, helping verify the model's learning behavior and generalization quality.
+
+
 What experiments did you run to test your project? What parameters did you change? How did you measure performance? Did you write any scripts to evaluate performance? Did you use any tools to evaluate performance? Do you have graphs of results? 
 
 *Tip: probably ~300 words and graphs and tables are usually good to convey your results!*
