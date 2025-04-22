@@ -1,7 +1,7 @@
 # Uk coin classification
 Jiaying Shen
-Github link: 
-Edge impulse link:
+Github link: https://github.com/JY-SHENNNN/CASA0018-CoinClassification
+Edge impulse link: https://studio.edgeimpulse.com/studio/652263/acquisition/training?page=1
 
 ## Introduction
 This project aims to develop Egde Impulse and transfer learning based UK coin classification system, which ables to classify 5 catrgories coin (1 penty, 5 pence, 10 pence, 20 pence, 50 pence) with over 80% accuracy. Initial idea comes from the scenario that UK coin always choas in daily life, it's hard to quickly tell them apart especially when checking out. 
@@ -9,12 +9,6 @@ This project aims to develop Egde Impulse and transfer learning based UK coin cl
 Traditional vending machines identify coins based on their size (Segrave, 2015). However, many coins have similar sizes but different values, which leads to recognition errors. This problem becomes worse when coins are worn out or stacked together. By contrast, manual sorting is a way to solve but time-consuming. In that case, an efficient classification system needed. 
 
 Previous studies have shown that convolutional neural networks (CNNs) can perform better than the human eye in recognizing coins (Xiang and Yan, 2021). Building on this, Jahan et al. (2023) proposed a deep learning model using MobileNetV2 for global coin detection, which is a compact and efficient neural network based on depth-wise separable convolutions, achieving an accuracy of 84.24%.
-
-- an overview of what the project does
-- your inspiration for making the project 
-- examples that it is based on. 
-
-*Tip: probably ~200 words and images are good!*
 
 ## Research Question
 Is it able to develop a system that run on mobile phone to quick classify the UK coin?
