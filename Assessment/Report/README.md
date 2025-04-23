@@ -20,7 +20,7 @@ Previous studies have shown that convolutional neural networks (CNNs) can perfor
 
 ---
 ## Research Question
-Is it able to develop a system that run on mobile phone to quick classify the UK coin?
+Can a mobile-based system effectively classify UK coins?
 
 ---
 ## Application Overview
@@ -84,11 +84,11 @@ In addition, this configuration supported both RGB and grayscale inputs. Larger 
 </div>
 
 
-During the model optimization process, various parameters were adjusted to achieve the best performance for MobileNetV2 (96x96, 0.35). Experimental results are shown in Fig. 7. Using 64 neurons led to significantly faster training than 128 neurons, while maintaining the same accuracy of 81.8%. Based on early tests, the number of epochs was fine-tuned starting from 60. Results indicated that 60 epochs were sufficient, as more epochs only slightly reduced the loss but introduced a higher risk of overfitting.
+During the model optimization process, various parameters were adjusted to achieve the best performance for MobileNetV2 (96x96, 0.35). Experimental results are shown in Fig. 7. Using 64 neurons led to significantly faster training than 128 neurons, while maintaining the same accuracy of 81.8%. Results indicated that 60 epochs were sufficient, as more epochs only slightly reduced the loss but introduced a higher risk of overfitting.
 
-Although Edge Impulse does not support full training accuracy or loss curve visualization, I evaluated model performance using the confusion matrix and data explorer tools. These tools provided detailed insights into misclassifications and class-wise performance, which helped verify the model's learning behavior and generalization capability. To further ensure the model did not overfit, I continuously monitored the gap between training and test accuracy throughout the training process. A significant drop in test accuracy compared to training accuracy suggested overfitting, which prompted adjustments to the model parameters. On the other hand, when the test accuracy exceeded the training accuracy, it indicated either the effect of strong regularization or a limited training dataset, leading to the decision to expand the dataset in order to improve generalization. 
+Although Edge Impulse does not support full training accuracy curve visualization, I evaluated model performance using the confusion matrix and data explorer tools. These tools provided detailed insights into misclassifications and class-wise performance, which helped verify the model's learning behavior and generalization capability. To further ensure the model did not overfit, I continuously monitored the gap between training and test accuracy throughout the training process. A significant drop in test accuracy compared to training accuracy suggested overfitting, which prompted adjustments to the model parameters. On the other hand, when the test accuracy exceeded the training accuracy, it indicated either the effect of strong regularization or a limited training dataset, leading to the decision to expand the dataset in order to improve generalization. 
 
-Specifically, dropout, layer freezing, and callback settings were alterned under "expert mode". A ModelCheckpoint callback was implemented to save the best-performing model based on validation accuracy. In addition, the script adopted a modular and well-organized callback structure, making it easier to manage and test different configurations. The dropout rate of 0.3 yielded the best results, improving accuracy by 3%. In transfer learning, freezing 35% of base layers significantly outperformed the 50% freeze ratio, which caused a 3–7% drop in accuracy. The patience setting for early stopping was also crucial. A patience value of 8 achieved the best balance with 85% accuracy, while smaller values like 3–5 limited performance to 78.8%. Altogether, the configuration of 64 neurons, 0.3 dropout rate, 35% freeze ratio, and patience of 8 offered the best balance of accuracy and efficiency. Training was stopped when the accuracy gap narrowed to an acceptable range, signaling a well-balanced and robust model.
+Specifically, the parameters were alterned under "expert mode". A ModelCheckpoint callback was implemented to save the best-performing model based on validation accuracy. In addition, the script adopted a modular and well-organized callback structure, making it easier to manage and test different configurations. The dropout rate of 0.3 yielded the best results, improving accuracy by 3%. Freezing 35% of base layers significantly outperformed the 50% freeze ratio, which caused a 3–7% drop in accuracy. The patience setting for early stopping was also crucial. A patience value of 8 achieved the best balance with 85% accuracy. Altogether, the configuration of 64 neurons, 0.3 dropout rate, 35% freeze ratio, and patience of 8 offered the best balance of accuracy and efficiency. Training was stopped when the accuracy gap narrowed to an acceptable range, signaling a well-balanced and robust model.
 
 ---
 ## Results and Observations
@@ -113,7 +113,13 @@ The coin classification model demonstrated generally good performance while exhi
 
 However, the model encountered significant challenges in classifying 10p coins. A noticeable gap between training and test accuracy suggests potential overfitting specific to this class. Approximately 20% of 10p coins were misclassified as 5p coins, likely due to the similar Queen's head designs on the obverse side and comparable textures on the reverse. As shown in Fig. 8, the features generated for 10p coins during training are not well-defined, which may have contributed to the confusion. Additionally, around 10% of 10p coins were misclassified as 50p coins, possibly due to their similar physical sizes.
 
-Real-world testing conducted through Edge Impulse's QR code deployment revealed additional limitations. The model's performance varied considerably depending on different backgrounds and coin orientations. I guess it's because the training dataset contains most of image were taken from the front.
+<div align=center>
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/real_test00.jpg" width="800">
+  <p><strong>Fig. 12.</strong> Real-world testing results.</p>
+</div>
+
+
+Real-world testing conducted through Edge Impulse's QR code deployment revealed additional limitations, the results shown in Fig. 12. The model's performance varied considerably depending on different backgrounds and coin orientations. I guess it's because the training dataset contains most of image were taken from the front.
 
 During testing, several key challenges emerged. One issue was the variation in the Queen’s portrait design, which differed depending on the year the coin was minted. Another difficulty came from the coins’ small size, which made it harder to capture fine texture details in the images. In addition, the reflective nature of the coin material often caused lighting interference during image capture, affecting image consistency and model accuracy.
 
@@ -129,17 +135,16 @@ With additional development time, several improvements could be implemented. Exp
 
 4. Sourikta (2024). Assignment Dataset. [online] Roboflow. https://universe.roboflow.com/sourikta/assignment-za0qo
 
-*Tip: we use [https://www.citethisforme.com](https://www.citethisforme.com) to make this task even easier.* 
 
 ----
 
 ## Declaration of Authorship
 
-I, AUTHORS NAME HERE, confirm that the work presented in this assessment is my own. Where information has been derived from other sources, I confirm that this has been indicated in the work.
+I, Jiaying Shen, confirm that the work presented in this assessment is my own. Where information has been derived from other sources, I confirm that this has been indicated in the work.
 
 
-*Digitally Sign by typing your name here*
+*Jiaying shen*
 
 ASSESSMENT DATE
-
-Word count: 
+23/4/2025
+Word count: 1524
