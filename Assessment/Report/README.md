@@ -1,6 +1,8 @@
 # Uk coin classification
 Jiaying Shen
+
 Github link: https://github.com/JY-SHENNNN/CASA0018-CoinClassification
+
 Edge impulse link: https://studio.edgeimpulse.com/studio/652263/acquisition/training?page=1
 
 ---
@@ -36,12 +38,12 @@ Once the trained model experierenced testing, which have the similar behaviour a
 
 ---
 ## Data
-<div style=" text-align: center;">
+<div style="text-align: center;">
   <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/open_source_Data.png" width="600">
   <p><strong>Fig. 3.</strong> Open-source data from (Sourikta, 2024).</p>
 </div>
 
-<div style=" text-align: center">
+<div style="text-align: center">
   <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/labelled_self_data.png" height = "500" width = "500">
   <p><strong>Fig. 4.</strong> Self-collected data with label</p>
 </div>
@@ -55,17 +57,17 @@ Before model training, all raw data underwent preprocessing steps. The downloade
 ## Model
 
 <div style=" text-align: center;">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/simple_classify_model.png">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/simple_classify_model.png" height="200" width="600">
   <p><strong>Fig. 5.</strong> Comparison between classification models.</p>
 </div>
 
 ---
 <div style=" text-align: center;">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/transfer_learning_model.png">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/transfer_learning_model.png" height="300" width="600">
   <p><strong>Fig. 6.</strong> Comparison between MobileNet models.</p>
 </div>
 
-Initially, the model experimented with a simple classification model, achieving only 40.6% accuracy. When the number of training epoch increases, the accuracy improved to 65.6%. Adding one more dense layer led to a slight improvement (69.4%), but the results were still not ideal. This led to the adoption of transfer learning approaches, specifically MobileNet architectures. Among the tested variants, MobileNetV2 consistently outperformed MobileNetV1 across different configurations. The optimal model was MobileNetV2 (96x96 input, 0.35 width multiplier), which balanced performance and resource efficiency. The accuracy achieved 72.7% with 0.49 loss while utilizing approximately 296.8k RAM and 575.2 ROM.
+Initially, the model experimented with a simple classification model, achieving only 40.6% accuracy. When the number of training epoch increases, the accuracy improved to 65.6%. Adding one more dense layer led to a slight improvement (69.4%), but the results were still not ideal. This led to the adoption of transfer learning approaches, specifically MobileNet architectures. The process begins with feature extraction, where the base layers of MobileNetV2 are reused to capture visual features like edges, texutres, and shapes. These layers remain frozen during the initial training phase to preserve the learned general patterns. On top of this fundation, custom dense layers are added and trained specifically for the classification task. Among the tested variants, MobileNetV2 consistently outperformed MobileNetV1 across different configurations. The optimal model was MobileNetV2 (96x96 input, 0.35 width multiplier), which balanced performance and resource efficiency. The accuracy achieved 72.7% with 0.49 loss while utilizing approximately 296.8k RAM and 575.2 ROM.
 
 In addition, this configuration supported both RGB and grayscale inputs. Larger models with a 160x160 input size only supported RGB images, which limited their flexibility. Comparative analysis showed that reducing the width multiplier (e.g., to 0.1 or 0.05) significantly decreased accuracy to 63.6% and 57.6% respectively. 
 
@@ -74,7 +76,7 @@ The selection of MobileNetV2 was further justified by its ability to maintain re
 ---
 ## Experiments
 <div style="text-align: center;">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/trasfer_learning_model_adjust.png">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/trasfer_learning_model_adjust.png" height="400" width="700">
   <p><strong>Fig. 7.</strong> Comparison between MobileNetV2 models.</p>
 </div>
 
