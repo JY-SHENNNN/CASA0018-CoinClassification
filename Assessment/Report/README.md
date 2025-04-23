@@ -7,8 +7,8 @@ Edge impulse link: https://studio.edgeimpulse.com/studio/652263/acquisition/trai
 
 ---
 ## Introduction
-<div style=" text-align: center;">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/overview.png">
+<div align=center>
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/overview.png" width="800">
   <p><strong>Fig. 1.</strong> Example images of UK coins</p>
 </div>
 
@@ -25,26 +25,26 @@ Is it able to develop a system that run on mobile phone to quick classify the UK
 ---
 ## Application Overview
 
-<div style=" text-align: center;">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/buildingblock.png">
+<div align=center>
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/buildingblock.png" width = "800">
   <p><strong>Fig. 2.</strong> Full pipeline for coin classification system.</p>
 </div>
 
-The project follows a modular pipeline shows in the graph. In the data collection stage, I sourced data from both oline open-source (Sourikta, 2024) and self-collected data. During the preprocessing stage, Python scripts were developed to filter the useful data and group the data into labeled classes for easier uploading to Edge impulse. 
+The project follows a modular pipeline shows in the Fig. 2. In the data collection stage, I sourced data from both oline open-source (Sourikta, 2024) and self-collected data. During the preprocessing stage, Python scripts were developed to filter the useful data and group the data into labeled classes for easier uploading to Edge impulse. 
 
 The training phase involves building a MobileNetV2-based image classification network with an input resolution of 96x96 grayscale on 196 number of samples across 5 classes. Various techniques were applied to enhance performance, like data augmentation, dropout regularization and early stopping.
 
-Once the trained model experierenced testing, which have the similar behaviour as the validation step, the model was converted into default format. For inference deployment, the trained model was hosted via Edge Impulse’s web-based runtime. Users can test the model either by launching it directly in a browser or by scanning a generated QR code using the Edge Impulse mobile application. This approach enables real-time image classification through a phone camera, showcasing the model’s predictions instantly and interactively. 
+Once the trained model experierenced testing, which have the similar behaviour as the validation step, the model was converted into default format. The model can be tested either by launching it directly in a browser or by scanning a generated QR code using the Edge Impulse mobile application. This approach enables real-time image classification through a phone camera, showcasing the model’s predictions instantly and interactively. 
 
 ---
 ## Data
-<div style="text-align: center;">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/open_source_Data.png" width="600">
+<div align=center>
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/open_source_Data.png" width="800">
   <p><strong>Fig. 3.</strong> Open-source data from (Sourikta, 2024).</p>
 </div>
 
-<div style="text-align: center">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/labelled_self_data.png" height = "500" width = "500">
+<div align=center>
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/labelled_self_data.png" width="800">
   <p><strong>Fig. 4.</strong> Self-collected data with label</p>
 </div>
 
@@ -56,61 +56,64 @@ Before model training, all raw data underwent preprocessing steps. The downloade
 
 ## Model
 
-<div style=" text-align: center;">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/simple_classify_model.png" height="200" width="600">
+<div align=center>
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/simple_classify_model.png" width="800">
   <p><strong>Fig. 5.</strong> Comparison between classification models.</p>
 </div>
+<br>
 
----
-<div style=" text-align: center;">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/transfer_learning_model.png" height="300" width="600">
-  <p><strong>Fig. 6.</strong> Comparison between MobileNet models.</p>
+<div align=center>
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/transfer_learning_block.png" width="800">
+  <p><strong>Fig. 6.</strong> Comparison between classification models.</p>
+</div>
+<br>
+<div align=center>
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/transfer_learning_model.png"  width="800">
+  <p><strong>Fig. 7.</strong> Comparison between MobileNet models.</p>
 </div>
 
-Initially, the model experimented with a simple classification model, achieving only 40.6% accuracy. When the number of training epoch increases, the accuracy improved to 65.6%. Adding one more dense layer led to a slight improvement (69.4%), but the results were still not ideal. This led to the adoption of transfer learning approaches, specifically MobileNet architectures. The process begins with feature extraction, where the base layers of MobileNetV2 are reused to capture visual features like edges, texutres, and shapes. These layers remain frozen during the initial training phase to preserve the learned general patterns. On top of this fundation, custom dense layers are added and trained specifically for the classification task. Among the tested variants, MobileNetV2 consistently outperformed MobileNetV1 across different configurations. The optimal model was MobileNetV2 (96x96 input, 0.35 width multiplier), which balanced performance and resource efficiency. The accuracy achieved 72.7% with 0.49 loss while utilizing approximately 296.8k RAM and 575.2 ROM.
+Initially, the model experimented with a simple classification model, shown in Fig. 5,  achieving only 40.6% accuracy. When the number of training epoch increases, the accuracy improved to 65.6%. Adding one more dense layer led to a slight improvement (69.4%), but the results were still not ideal. This led to the adoption of transfer learning approaches, which shown in Fig. 6, specifically MobileNet architectures. The process begins with feature extraction, where the base layers are reused to capture visual features like edges, texutres, and shapes. These layers remain frozen during the initial training phase to preserve the learned general patterns. On top of this fundation, custom dense layers are added and trained specifically for the classification task. The structure of MobileNetV2, especially its use of inverted residual blocks and linear bottlenecks, helped it extract features more effectively. Thus, among the tested variants, MobileNetV2 consistently outperformed MobileNetV1 across different configurations. 
 
-In addition, this configuration supported both RGB and grayscale inputs. Larger models with a 160x160 input size only supported RGB images, which limited their flexibility. Comparative analysis showed that reducing the width multiplier (e.g., to 0.1 or 0.05) significantly decreased accuracy to 63.6% and 57.6% respectively. 
-
-The selection of MobileNetV2 was further justified by its ability to maintain reasonable accuracy (57.6%) even with aggressive 0.35 width multiplier, while simpler models like MobileNetV1 failed to exceed 57.6% accuracy regardless of parameter adjustments. The structure of MobileNetV2, especially its use of inverted residual blocks and linear bottlenecks, helped it extract features more effectively. This is likely why it performed better on the coin classification task than both the basic classification model and MobileNetV1.
+In addition, this configuration supported both RGB and grayscale inputs. Larger models with a 160x160 input size only supported RGB images, which limited their flexibility. Comparative analysis showed that reducing the width multiplier (e.g., to 0.1 or 0.05) significantly decreased accuracy to 63.6% and 57.6% respectively. While simpler models like MobileNetV1 failed to exceed 57.6% accuracy regardless of parameter adjustments. The optimal model was MobileNetV2 (96x96 input, 0.35 width multiplier), which balanced performance and resource efficiency. The accuracy achieved 72.7% with 0.49 loss while utilizing approximately 296.8k RAM and 575.2 ROM.
 
 ---
 ## Experiments
-<div style="text-align: center;">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/trasfer_learning_model_adjust.png" height="400" width="700">
-  <p><strong>Fig. 7.</strong> Comparison between MobileNetV2 models.</p>
+<div align=center>
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/trasfer_learning_model_adjust.png" width="800">
+  <p><strong>Fig. 8.</strong> Comparison between MobileNetV2 models.</p>
 </div>
 
 
-During the model optimization process, various parameters were adjusted to achieve the best performance for MobileNetV2 (96x96, 0.35). Experimental results in Fig. 7z showed that using 64 neurons led to significantly faster training than 128 neurons, while maintaining the same accuracy of 81.8%. Based on early tests, the number of epochs was fine-tuned starting from 60. Results indicated that 60 epochs were sufficient, as more epochs only slightly reduced the loss but introduced a higher risk of overfitting.
+During the model optimization process, various parameters were adjusted to achieve the best performance for MobileNetV2 (96x96, 0.35). Experimental results are shown in Fig. 7. Using 64 neurons led to significantly faster training than 128 neurons, while maintaining the same accuracy of 81.8%. Based on early tests, the number of epochs was fine-tuned starting from 60. Results indicated that 60 epochs were sufficient, as more epochs only slightly reduced the loss but introduced a higher risk of overfitting.
 
-Although Edge Impulse does not support full training accuracy or loss curve visualization, I evaluated model performance using the confusion matrix and data explorer tools. These tools provided detailed insights into misclassifications and class-wise performance, which helped verify the model's learning behavior and generalization capability. To further ensure the model did not overfit, I continuously monitored the gap between training and test accuracy throughout the training process. A significant drop in test accuracy compared to training accuracy suggested overfitting, which prompted adjustments to the model parameters. On the other hand, when the test accuracy exceeded the training accuracy, it indicated either the effect of strong regularization or a limited training dataset, leading to the decision to expand the dataset in order to improve generalization. Training was stopped when the accuracy gap narrowed to an acceptable range, signaling a well-balanced and robust model.
+Although Edge Impulse does not support full training accuracy or loss curve visualization, I evaluated model performance using the confusion matrix and data explorer tools. These tools provided detailed insights into misclassifications and class-wise performance, which helped verify the model's learning behavior and generalization capability. To further ensure the model did not overfit, I continuously monitored the gap between training and test accuracy throughout the training process. A significant drop in test accuracy compared to training accuracy suggested overfitting, which prompted adjustments to the model parameters. On the other hand, when the test accuracy exceeded the training accuracy, it indicated either the effect of strong regularization or a limited training dataset, leading to the decision to expand the dataset in order to improve generalization. 
 
-The dropout rate of 0.3 yielded the best results, improving accuracy by 3%. In transfer learning, freezing 35% of base layers significantly outperformed the 50% freeze ratio, which caused a 3–7% drop in accuracy. The patience setting for early stopping was also crucial. A patience value of 8 achieved the best balance with 85% accuracy, while smaller values like 3–5 limited performance to 78.8%. Altogether, the configuration of 64 neurons, 0.3 dropout rate, 35% freeze ratio, and patience of 8 offered the best balance of accuracy and efficiency. Specifically, dropout, layer freezing, and callback settings were alterned under "expert mode". A ModelCheckpoint callback was implemented to save the best-performing model based on validation accuracy. Additionally, the script adopted a modular and well-organized callback structure, making it easier to manage and test different configurations.
+Specifically, dropout, layer freezing, and callback settings were alterned under "expert mode". A ModelCheckpoint callback was implemented to save the best-performing model based on validation accuracy. In addition, the script adopted a modular and well-organized callback structure, making it easier to manage and test different configurations. The dropout rate of 0.3 yielded the best results, improving accuracy by 3%. In transfer learning, freezing 35% of base layers significantly outperformed the 50% freeze ratio, which caused a 3–7% drop in accuracy. The patience setting for early stopping was also crucial. A patience value of 8 achieved the best balance with 85% accuracy, while smaller values like 3–5 limited performance to 78.8%. Altogether, the configuration of 64 neurons, 0.3 dropout rate, 35% freeze ratio, and patience of 8 offered the best balance of accuracy and efficiency. Training was stopped when the accuracy gap narrowed to an acceptable range, signaling a well-balanced and robust model.
 
 ---
 ## Results and Observations
 
-<div style=" text-align: center;  margin-bottom: 40px">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/feature.png">
-  <p><strong>Fig. 8.</strong> Generated feature based on the 196 training dataset. </p>
+<div align=center>
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/feature.png" width="800">
+  <p><strong>Fig. 9.</strong> Generated feature based on the 196 training dataset. </p>
 </div>
 
-<div style="text-align: center; margin-bottom: 40px">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/training_model.png">
-  <p><strong>Fig. 9.</strong> Training model results.</p>
+<div align=center>
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/training_model.png" width="800">
+  <p><strong>Fig. 10.</strong> Training model results.</p>
 </div>
 
 
-<div style=" text-align: center; margin-bottom: 40px">
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/test_model.png">
-  <p><strong>Fig. 10.</strong> Testing model results.</p>
+<div align=center>
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/test_model.png" width="800">
+  <p><strong>Fig. 11.</strong> Testing model results.</p>
 </div>
 
 The coin classification model demonstrated generally good performance while exhibiting some specific limitations. It performed particularly well in identifying distinctive coin types, with the 50p and 20p coins achieving approximately 90% accuracy in both the training and testing phases. This strong result can be attributed to their unique heptagonal shapes, which made them easily distinguishable. The 1p coin also achieved relatively high accuracy, largely due to its distinctive copper color and the prominent "1" marking on its reverse side. Interestingly, the 5p coin showed a training accuracy of 83.3%, which improved to 85.7% during testing. As illustrated in Fig. 8, the feature characteristics of these coin denominations are well-defined and contribute effectively to the model’s classification performance.
 
 However, the model encountered significant challenges in classifying 10p coins. A noticeable gap between training and test accuracy suggests potential overfitting specific to this class. Approximately 20% of 10p coins were misclassified as 5p coins, likely due to the similar Queen's head designs on the obverse side and comparable textures on the reverse. As shown in Fig. 8, the features generated for 10p coins during training are not well-defined, which may have contributed to the confusion. Additionally, around 10% of 10p coins were misclassified as 50p coins, possibly due to their similar physical sizes.
 
-Real-world testing conducted through Edge Impulse's QR code deployment revealed additional limitations. The model's performance varied considerably depending on different backgrounds and coin orientations. I guess it's because the training dataset contains most of image in font.
+Real-world testing conducted through Edge Impulse's QR code deployment revealed additional limitations. The model's performance varied considerably depending on different backgrounds and coin orientations. I guess it's because the training dataset contains most of image were taken from the front.
 
 During testing, several key challenges emerged. One issue was the variation in the Queen’s portrait design, which differed depending on the year the coin was minted. Another difficulty came from the coins’ small size, which made it harder to capture fine texture details in the images. In addition, the reflective nature of the coin material often caused lighting interference during image capture, affecting image consistency and model accuracy.
 
