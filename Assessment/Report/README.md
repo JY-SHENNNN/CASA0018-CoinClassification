@@ -3,7 +3,7 @@ Jiaying Shen
 
 Github link: https://github.com/JY-SHENNNN/CASA0018-CoinClassification
 
-Edge impulse link: https://studio.edgeimpulse.com/studio/652263/acquisition/training?page=1
+Edge impulse link: https://studio.edgeimpulse.com/studio/652263
 
 ---
 ## Introduction
