@@ -8,7 +8,7 @@ Edge impulse link: https://studio.edgeimpulse.com/studio/652263
 ---
 ## Introduction
 <div align=center>
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/overview.png" width="800">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Projects/Final%20Project/Img/overview.png" width="800">
   <p><strong>Fig. 1.</strong> Example images of UK coins</p>
 </div>
 
@@ -26,7 +26,7 @@ Can a mobile-based system effectively classify UK coins?
 ## Application Overview
 
 <div align=center>
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/buildingblock.png" width = "800">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Projects/Final%20Project/Img/buildingblock.png" width = "800">
   <p><strong>Fig. 2.</strong> Full pipeline for coin classification system.</p>
 </div>
 
@@ -39,12 +39,12 @@ Once the trained model experierenced testing, which have the similar behaviour a
 ---
 ## Data
 <div align=center>
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/open_source_Data.png" width="800">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Projects/Final%20Project/Img/open_source_Data.png" width="800">
   <p><strong>Fig. 3.</strong> Open-source data from (Sourikta, 2024).</p>
 </div>
 
 <div align=center>
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/labelled_self_data.png" width="800">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Projects/Final%20Project/Img/labelled_self_data.png" width="800">
   <p><strong>Fig. 4.</strong> Self-collected data with label</p>
 </div>
 
@@ -57,18 +57,18 @@ Before model training, all raw data underwent preprocessing steps. The downloade
 ## Model
 
 <div align=center>
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/simple_classify_model.png" width="800">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Projects/Final%20Project/Img/simple_classify_model.png" width="800">
   <p><strong>Fig. 5.</strong> Comparison between classification models.</p>
 </div>
 <br>
 
 <div align=center>
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/transfer_learning_block.png" width="800">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Projects/Final%20Project/Img/transfer_learning_block.png" width="800">
   <p><strong>Fig. 6.</strong> Comparison between classification models.</p>
 </div>
 <br>
 <div align=center>
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/transfer_learning_model.png"  width="800">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Projects/Final%20Project/Img/transfer_learning_model.png"  width="800">
   <p><strong>Fig. 7.</strong> Comparison between MobileNet models.</p>
 </div>
 
@@ -79,7 +79,7 @@ In addition, this configuration supported both RGB and grayscale inputs. Larger 
 ---
 ## Experiments
 <div align=center>
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/trasfer_learning_model_adjust.png" width="800">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Projects/Final%20Project/Img/trasfer_learning_model_adjust.png" width="800">
   <p><strong>Fig. 8.</strong> Comparison between MobileNetV2 models.</p>
 </div>
 
@@ -94,18 +94,18 @@ Specifically, the parameters were alterned under "expert mode". A ModelCheckpoin
 ## Results and Observations
 
 <div align=center>
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/feature.png" width="800">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Projects/Final%20Project/Img/feature.png" width="800">
   <p><strong>Fig. 9.</strong> Generated feature based on the 196 training dataset. </p>
 </div>
 
 <div align=center>
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/training_model.png" width="800">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Projects/Final%20Project/Img/training_model.png" width="800">
   <p><strong>Fig. 10.</strong> Training model results.</p>
 </div>
 
 
 <div align=center>
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/test_model.png" width="800">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Projects/Final%20Project/Img/test_model.png" width="800">
   <p><strong>Fig. 11.</strong> Testing model results.</p>
 </div>
 
@@ -114,7 +114,7 @@ The coin classification model demonstrated generally good performance while exhi
 However, the model encountered significant challenges in classifying 10p coins. A noticeable gap between training and test accuracy suggests potential overfitting specific to this class. Approximately 20% of 10p coins were misclassified as 5p coins, likely due to the similar Queen's head designs on the obverse side and comparable textures on the reverse. As shown in Fig. 8, the features generated for 10p coins during training are not well-defined, which may have contributed to the confusion. Additionally, around 10% of 10p coins were misclassified as 50p coins, possibly due to their similar physical sizes.
 
 <div align=center>
-  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Img/real_test00.jpg" width="800">
+  <img src="https://raw.githubusercontent.com/JY-SHENNNN/CASA0018-CoinClassification/refs/heads/main/Projects/Final%20Project/Img/real_test00.jpg" width="800">
   <p><strong>Fig. 12.</strong> Real-world testing results.</p>
 </div>
 
